@@ -1,10 +1,13 @@
 const socket = io()
 const chatForm = document.querySelector('#chat-form')
+const chatMessages = document.querySelector('.chat-messages')
 
 socket.on('message', (message) => {
 	console.log(message)
 
 	outputMessage(message)
+
+	chatMessages.scrollTop = chatMessages.scrollHeight
 })
 
 chatForm.addEventListener('submit', (e) => {
@@ -21,9 +24,9 @@ function outputMessage(message) {
 	const div = document.createElement('div')
 	div.classList.add('message')
 	div.innerHTML = `
-		<p class="meta">Mary <span>9:15pm</span></p>
+		<p class="meta">${message.username} <span>${message.time}</span></p>
 		<p class="text">
-			${message}
+			${message.text}
 		</p>
 	`
 
