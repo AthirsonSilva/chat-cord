@@ -28,7 +28,7 @@ io.on('connection', (connection) => {
 
 		connection.emit(
 			'message',
-			formatMessage(botName, 'Welcome to ChatCord!'),
+			formatMessage(botName, 'Welcome to PepeChat!'),
 		)
 
 		connection.broadcast
